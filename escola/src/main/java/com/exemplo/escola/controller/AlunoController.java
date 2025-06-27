@@ -27,7 +27,7 @@ public class AlunoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Aluno> buscar(@PathVariable Long id) {
-        return service.buscarPorId(id)
+        return service.buscarPorIdUm(id)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }

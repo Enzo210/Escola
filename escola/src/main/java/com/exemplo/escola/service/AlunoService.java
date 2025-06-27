@@ -26,6 +26,9 @@ public Aluno buscarPorId(Long id) {
     return alunoRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("Aluno não encontrado com ID: " + id));
 }
+public Optional<Aluno> buscarPorIdUm(Long id) {
+    return alunoRepository.findById(id);
+}
 
     public void deletar(Long id) {
         alunoRepository.deleteById(id);
