@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastrar Curso</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Cadastrar Curso</h1> 
+  <a href="/alunos" class="btn-navegacao">Ir para Cadastro de Alunos</a>
+  <form action="/cursos" method='post'>
+    <label for="nome">Nome do Curso:</label>
+    <input type="text" name="nome" id="nome" required><br>
+
+    <label for="cargaHoraria">Carga Horária:</label>
+    <input type="number" name="cargaHoraria" id="cargaHoraria" required><br>
+
+    <button type="submit">Salvar</button>
+  </form>
+</body>
+</html>

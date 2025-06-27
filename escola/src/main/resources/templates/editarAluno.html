@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Editar Aluno</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Editar Aluno</h1>
+  <form th:action="@{/alunos/atualizar}" method="post" th:object="${aluno}">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nome}" required />
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required />
+
+    <label>Matrícula:</label>
+    <input type="text" th:field="*{matricula}" required />
+
+    <label>Curso:</label>
+    <select th:field="*{curso.id}">
+      <option th:each="curso : ${cursos}" th:value="${curso.id}" th:text="${curso.nome}"></option>
+    </select>
+
+    <button type="submit">Salvar Alterações</button>
+  </form>
+  <a href="/alunos" class="btn-navegacao">Voltar</a>
+</body>
+</html>

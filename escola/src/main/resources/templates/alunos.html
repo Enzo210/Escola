@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro de Alunos</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1>Cadastro de Alunos</h1>
+  <a href="/cursos" class="btn-navegacao">Ir para Cadastro de Cursos</a>    
+  <form action="/alunos" method="post">
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" id="nome" required><br>
+
+    <label for="email">E-mail:</label>
+    <input type="email" name="email" id="email" required><br>
+
+    <label for="matricula">Matrícula:</label>
+    <input type="text" name="matricula" id="matricula" required><br>
+
+    <label for="curso">Curso:</label>
+    <select name="curso.id" id="curso" required>
+      <option th:each="curso : ${cursos}" th:value="${curso.id}" th:text="${curso.nome}"></option>
+    </select><br>
+
+    <button type="submit">Salvar</button>
+  </form>
+
+  <hr>
+  <h2>Lista de Alunos</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Matrícula</th>
+      <th>Curso</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="aluno : ${alunos}">
+      <td th:text="${aluno.nome}"></td>
+      <td th:text="${aluno.email}"></td>
+      <td th:text="${aluno.matricula}"></td>
+      <td th:text="${aluno.curso.nome}"></td>
+      <td>
+        <a th:href="@{/alunos/editar/{id}(id=${aluno.id})}" class="btn-navegacao">Editar</a>
+        <a th:href="@{/alunos/deletar/{id}(id=${aluno.id})}" class="btn-navegacao" style="background-color:#d32f2f;">Excluir</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
